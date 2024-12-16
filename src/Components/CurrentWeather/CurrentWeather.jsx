@@ -5,8 +5,13 @@ const CurrentWeather= () => {
   const [weatherData, setWeatherData] = useState(null);
   const [error, setError] = useState(null);
 
+<<<<<<< HEAD
   const apiKey = "2febae47135f879377604dfd6ab516a2"; //ND add theapi key
   const city = "Colombo";
+=======
+  const apiKey = "API_KEY"; //ND add theapi key
+  const city = "Akurana";
+>>>>>>> 61ce63c096303333cc6053b5d66020e079784c14
 
   // Fetch weather data
   useEffect(() => {

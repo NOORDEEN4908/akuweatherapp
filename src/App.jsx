@@ -1,7 +1,7 @@
 import React from 'react'
 import './index.css'
 import Home from './Pages/Home/Home'
-import WeatherBox from "./CurrentWeather";
+import CurrentWeather from './Components/CurrentWeather/CurrentWeather.jsx';
 
 const App = () => {
   return (

@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
-import "./WeatherBox.css";
+import "./CurrentWeather.css";
 
 const WeatherBox = () => {
   const [weatherData, setWeatherData] = useState(null);
   const [error, setError] = useState(null);
 
   const apiKey = "API_KEY"; //ND add theapi key
-  const city = "Colombo";
+  const city = "Akurana";
 
   // Fetch weather data
   useEffect(() => {

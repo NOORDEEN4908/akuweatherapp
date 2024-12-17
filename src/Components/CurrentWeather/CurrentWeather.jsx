@@ -7,7 +7,7 @@ const CurrentWeather= () => {
 
  
   const apiKey = "2febae47135f879377604dfd6ab516a2"; //ND add theapi key
-  const city = "Colombo";
+  const city = "Kandy";
 
 
   // Fetch weather data

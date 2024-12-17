@@ -4,12 +4,11 @@ import './Navbar.css'
 const Navbar = () => {
   return (
     <div className='navbar'>
-      <ul className='nav-leftside'>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
+      <ul className='navbar-left'>
+        <li>Home</li>
+        <li>AirQuality</li>
+        <li>Contact Us</li>
+   
       </ul>
       
     </div>

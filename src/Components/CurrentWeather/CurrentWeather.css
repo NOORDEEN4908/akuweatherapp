@@ -1,5 +1,5 @@
 .weather-box {
-  width: 300px;
+  width: 40%;
   padding: 20px;
   background: #f0f4f8;
   border-radius: 10px;
@@ -7,6 +7,9 @@
   text-align: center;
   font-family: Arial, sans-serif;
   color: #333;
+position: absolute;
+top: 100px;
+left: 50px;
 }
 
 .weather-title {

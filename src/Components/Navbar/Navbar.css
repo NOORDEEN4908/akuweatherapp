@@ -1,49 +1,100 @@
-/* General navbar styling */
-.navbar {
-    width: 100%;
-    background-color: white; /* Weather-themed blue background */
-    padding: 10px 20px;       /* Adds space inside the navbar */
-    display: flex;            /* Flexbox for alignment */
-    align-items: center;      /* Center items vertically */
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+/* General Navbar Container */
+.navbar-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100px; /* Banner height */
+  background: linear-gradient(to bottom, #d0eaff, #1724da); /* Light blue gradient */
+  font-family: Arial, sans-serif;
+  color: navy;
+  text-align: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Adds depth */
+  position: relative;
+}
+
+/* Left and Right Patterns */
+.side-pattern {
+  width: 10%; /* Width for patterns */
+  background: url('pattern-image.png') center center/cover no-repeat; /* Add your pattern image */
+  height: 100%;
+}
+
+.left-pattern {
+  border-right: 2px solid #b0d4e5; /* Separator line */
+}
+
+.right-pattern {
+  border-left: 2px solid #b0d4e5;
+}
+
+/* Centered Navbar Content */
+.navbar-content {
+  flex: 1; /* Occupies remaining space */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+}
+
+/* Navbar Title Styling */
+.navbar-title {
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin: 0;
+  text-shadow: 1px 2px 4px rgba(0, 0, 0, 0.3); /* Subtle text shadow */
+}
+
+/* Navigation Menu */
+.nav-menu {
+  display: flex;
+  gap: 20px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.nav-item a {
+  text-decoration: none;
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: navy;
+  padding: 10px 15px;
+  border-radius: 5px;
+  transition: all 0.3s ease-in-out;
+}
+
+/* Hover Effect for Navigation Links */
+.nav-item a:hover {
+  background-color: #1c75bc; /* Darker blue */
+  color: white;
+  transform: scale(1.05); /* Slight zoom */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+/* Active or Focused Link */
+.nav-item a:active,
+.nav-item a:focus {
+  background-color: #004e8b; /* Darker shade for active */
+  color: #fff;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .navbar-container {
+    height: 150px;
   }
-  
-  /* List styling */
-  .navbar-left {
-    list-style-type: none; /* Removes dots */
-    display: flex;         /* Aligns list items horizontally */
-    margin: 0;             /* Removes default margin */
-    padding: 0;            /* Removes default padding */
+
+  .navbar-title {
+    font-size: 2rem;
   }
-  
-  /* Individual list items */
-  .navbar-left li {
-    margin-right: 20px;         /* Spacing between items */
-    font-size: 16px;            /* Text size */
-           
-    color:black;               /* Text color */
-    cursor: pointer;            /* Pointer cursor on hover */
-    transition: color 0.3s ease, transform 0.2s ease; /* Smooth hover effect */
+
+  .nav-menu {
+    flex-direction: column;
+    gap: 10px;
   }
-  
-  /* Hover effect */
-  .navbar-left li:hover {
-    color: blue;             /* Highlight color on hover */
-    transform: scale(1.1);      /* Slightly enlarges the item */
+
+  .side-pattern {
+    display: none; /* Hide patterns on smaller screens */
   }
-  
-  /* Responsive design for smaller screens */
-  @media (max-width: 768px) {
-    .navbar {
-      flex-direction: column;   /* Stacks items vertically */
-      align-items: flex-start;  /* Aligns items to the left */
-    }
-    .navbar-left {
-      flex-direction: column;   /* Stacks list items */
-    }
-    .navbar-left li {
-      margin-right: 0;          /* Removes horizontal spacing */
-      margin-bottom: 10px;      /* Adds vertical spacing */
-    }
-  }
-  
+}

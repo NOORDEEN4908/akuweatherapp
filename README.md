@@ -66,7 +66,7 @@ This is a **Weather Web Application** developed as part of the final project for
 Contributions are welcome! Please fork the repository and submit a pull request with your changes.
 
 ## License
-This project is licensed under the [MIT License](LICENSE).
+This project is licensed under the [Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0)](LICENSE).
 
 ## Acknowledgments
 - OpenWeather for providing weather data through their API.

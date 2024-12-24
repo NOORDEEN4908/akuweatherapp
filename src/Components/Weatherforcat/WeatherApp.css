@@ -1,0 +1,51 @@
+.weather-app-container {
+    display: flex;
+    flex-direction: row;
+    height: 600px;
+    padding: 1rem;
+    transition: background-color 0.5s ease;
+    width: 100%;
+    gap: 0; /* Ensures no gap between components */
+  }
+  
+  .current-weather {
+    flex: 1;
+   
+    border-radius: 40px;
+    padding: 1.5rem;
+    margin-right: 1rem;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  }
+  
+  .weather-forecast-container {
+    flex: 1;
+    border-radius: 15px;
+    padding: 1.5rem;
+  }
+  
+  .forecast-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: center;
+  }
+  
+  .forecast-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: #fff;
+    border-radius: 10px;
+    padding: 1rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    width: 100px;
+    height: 100px;
+    text-align: center;
+  }
+  
+  .forecast-item img {
+    width: 50px;
+    height: 50px;
+  }
+  

@@ -1,15 +1,15 @@
 /* Main Container for the App */
 .container {
   width: 100%;
-  max-width: 600px; /* Keep the responsiveness */
+  max-width: 600px; /* Responsive max width */
   height: 600px;
-  margin: 15px 0 0 20px; /* Top, Right, Bottom, Left margins */
+  margin: 15px auto; /* Center horizontally with top margin */
   border-radius: 12px;
   padding: 20px;
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
   transition: background 0.5s ease;
+  overflow: hidden;
 }
-
 
 /* Background Styles based on Weather Conditions */
 .clear_bg {
@@ -51,16 +51,16 @@
 }
 
 .top-bar input {
-  width: 70%; /* Dynamic width for smaller screens */
-  height: 50px; /* Adjust height */
+  flex: 1; /* Make input fill available space */
+  max-width: 70%; /* Limit maximum width */
+  height: 50px;
   background: #ebfffc;
   border: none;
   outline: none;
   border-radius: 40px;
-  padding-left: 20px;
+  padding: 0 20px;
   color: #626262;
   font-size: 18px;
-  font-weight: 400;
 }
 
 .search-icon {
@@ -72,24 +72,23 @@
   background: #ebfffc;
   border-radius: 50%;
   cursor: pointer;
-  transition: transform 0.3s ease; /* Add hover animation */
+  transition: transform 0.3s ease;
 }
 
 .search-icon:hover {
-  transform: scale(1.1); /* Slight enlargement */
+  transform: scale(1.1);
 }
 
 /* Weather Icon */
-.weather-imge {
-  margin-top: 20px;
+.weather-image {
+  margin: 20px auto 0;
   display: flex;
   justify-content: center;
-  align-items: center;
 }
 
-.weather-imge img {
+.weather-image img {
   width: 150px;
-  height: 100px;
+  height: auto;
 }
 
 /* Temperature Display */
@@ -97,7 +96,7 @@
   display: flex;
   justify-content: center;
   color: white;
-  font-size: 80px; /* Adjust size */
+  font-size: 4rem; /* Dynamic font size */
   font-weight: 500;
   margin-top: 10px;
 }
@@ -107,7 +106,7 @@
   display: flex;
   justify-content: center;
   color: white;
-  font-size: 40px; /* Adjust size */
+  font-size: 2rem; /* Dynamic font size */
   font-weight: 400;
 }
 
@@ -115,10 +114,13 @@
 .data-container {
   margin-top: 30px;
   display: flex;
-  justify-content: space-around; /* Spread elements evenly */
-  flex-wrap: wrap; /* Allow wrapping on small screens */
+  justify-content: space-around;
+  flex-wrap: wrap;
+  gap: 15px; /* Add space between rows */
   color: white;
-  background-color:gray;
+  padding: 10px;
+  background-color: rgba(0, 0, 0, 0.2); /* Semi-transparent for contrast */
+  border-radius: 10px;
 }
 
 .element {
@@ -133,15 +135,17 @@
 }
 
 .data {
-  font-size: 20px;
+  font-size: 1.2rem;
   font-weight: 400;
 }
 
 .text {
-  font-size: 16px;
+  font-size: 1rem;
   font-weight: 400;
+  opacity: 0.8; /* Reduce visibility slightly */
 }
 
+/* Wind Direction Container */
 .wind-direction-container {
   display: flex;
   justify-content: center;
@@ -155,5 +159,29 @@
   width: 40px;
   height: 40px;
   display: block;
-  transition: transform 0.5s ease; /* Smooth rotation */
+  transition: transform 0.5s ease;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .top-bar input {
+    max-width: 80%;
+    font-size: 16px;
+  }
+
+  .weather-temp {
+    font-size: 3rem;
+  }
+
+  .weather-location {
+    font-size: 1.5rem;
+  }
+
+  .data {
+    font-size: 1rem;
+  }
+
+  .text {
+    font-size: 0.9rem;
+  }
 }

@@ -1,0 +1,97 @@
+.weather-app {
+    text-align: center;
+    font-family: Arial, sans-serif;
+  }
+  
+  form {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 1rem;
+  }
+  
+  input {
+    padding: 0.5rem;
+    font-size: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin-right: 0.5rem;
+  }
+  
+  button {
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background-color: #0056b3;
+  }
+  
+  .forecast-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 1rem;
+    padding: 1rem;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  
+  .weather-card {
+    background: white;
+    border-radius: 10px;
+    padding: 1rem;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .weather-card h3 {
+    margin: 0.5rem 0;
+    font-size: 1.2rem;
+    color: #333;
+  }
+  
+  .weather-card p {
+    margin: 0.3rem 0;
+    font-size: 0.9rem;
+    color: #555;
+  }
+  
+  .weather-card img {
+    width: 50px;
+    height: 50px;
+    margin: 0.5rem 0;
+  }
+  .clear_bg {
+    background-image: url('../Assets/clearsky.jpg');
+    background-size: cover;
+    background-position: center;
+  }
+  
+  .cloud_bg {
+    background-image: url('../Assets/closeup-large-gray-clouds.jpg');
+    background-size: cover;
+    background-position: center;
+  }
+  
+  .rainy_bg {
+    background-image: url('../Assets/rain.jpg');
+    background-size: cover;
+    background-position: center;
+  }
+  
+  .snowy_bg {
+    background-image: url('../Assets/snow.jpg');
+    background-size: cover;
+    background-position: center;
+  }
+  
+  .default_bg {
+    background-image: url('../Assets/drizzlesky.jpg');
+    background-size: cover;
+    background-position: center;
+  }
+  

@@ -50,7 +50,7 @@ const WeatherForecast = ({ city }) => {
       console.error("Error fetching weather data:", error.message);
       setError(error.message);
       setForecast([]);
-      setBackground("default_bg");
+      setBackground("clear_bg");
     }
   };
 
@@ -63,7 +63,7 @@ const WeatherForecast = ({ city }) => {
       <h3>5-Day Forecast of {location}</h3>
        {/* Display the location */}
 
-      {error && <p className="error-message">{error}</p>}
+
 
       <div className="forecast-row">
         {forecast.map((item, index) => (

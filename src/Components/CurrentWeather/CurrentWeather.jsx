@@ -98,8 +98,11 @@ const CurrentWeather = () => {
   };
 
   return (
-    <div className="weather-app-container">
-      <div className={`current-weather ${background}`}>
+    <div className={`weather-app-container current-weather ${background}`}>
+    <div className={`current-weather ${background}`}>
+      {/* Your content goes here */}
+   
+  
         <div className="top-bar">
           <input
             type="text"

@@ -17,15 +17,11 @@
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
   }
   
-  .weather-forecast-container {
-    flex: 1;
-    border-radius: 15px;
-    padding: 1.5rem;
-  }
   
   .forecast-container {
     display: flex;
     flex-wrap: wrap;
+    height: 500px;
     gap: 1rem;
     justify-content: center;
   }
@@ -47,5 +43,48 @@
   .forecast-item img {
     width: 50px;
     height: 50px;
+  }
+  .weather-forecast-container {
+    background: #f0f0f0;
+    padding: 1rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .forecast-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); /* Responsive grid */
+    gap: 1rem;
+    padding: 1rem;
+    max-width: 100%;
+  }
+  
+  .forecast-item {
+    background: white;
+    border-radius: 10px;
+    padding: 1rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    height: 500px; /* Set height of the forecast box */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .forecast-item img {
+    width: 60px;
+    height: 60px;
+  }
+  
+  .forecast-item p {
+    font-size: 1.2rem;
+    margin: 0.5rem 0;
+  }
+  
+  .weather-forecast-container h3 {
+    text-align: center;
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
   }
   

@@ -7,7 +7,8 @@ const WeatherForecast = ({ city }) => {
   const [background, setBackground] = useState("cloud_bg");
   const [error, setError] = useState(null); // State for error messages
 
-  const API_KEY = "2febae47135f879377604dfd6ab516a2";
+
+  const API_KEY = "2febae47135f879377604dfd6ab516a2"; // Replace with your actual API key
 
   // Fetch forecast based on city
   const fetchWeather = async (searchCity) => {
@@ -24,11 +25,11 @@ const WeatherForecast = ({ city }) => {
       // Clear any previous error
       setError(null);
 
-      // Filter forecast for every 6 hours
-      const filteredForecast = forecastData.list.filter((_, index) => index % 2 === 0);
+      // Filter forecast data to show daily predictions (first forecast of each day)
+      const dailyForecast = forecastData.list.filter((_, index) => index % 8 === 0); // Every 8th data point is the forecast for the day
 
       setForecast(
-        filteredForecast.map((item) => ({
+        dailyForecast.map((item) => ({
           date: item.dt_txt,
           temp: (item.main.temp - 273.15).toFixed(1), // Convert from Kelvin to Celsius
           icon: item.weather[0].icon,
@@ -58,7 +59,7 @@ const WeatherForecast = ({ city }) => {
 
   return (
     <div className={`weather-forecast-container ${background}`}>
-      <h3>4-Hour Forecast</h3>
+      <h3>Weekly Forecast</h3>
 
       {/* Display error message */}
       {error && <p className="error-message">{error}</p>}
@@ -66,12 +67,13 @@ const WeatherForecast = ({ city }) => {
       <div className="forecast-container">
         {forecast.map((item, index) => (
           <div key={index} className="forecast-item">
-            <p>{new Date(item.date).toLocaleString("en-US", { hour: "numeric", hour12: true })}</p>
+            <p>{new Date(item.date).toLocaleDateString()}</p> {/* Show only the date */}
             <img
               src={`https://openweathermap.org/img/wn/${item.icon}.png`}
               alt={item.description}
             />
             <p>{item.temp}°C</p>
+            <p>{item.description}</p>
           </div>
         ))}
       </div>

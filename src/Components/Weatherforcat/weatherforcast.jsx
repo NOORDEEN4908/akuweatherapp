@@ -1,16 +1,14 @@
 import React, { useState, useEffect } from "react";
 import "./WeatherForecast.css";
-import "./WeatherApp.css";
 
 const WeatherForecast = ({ city }) => {
   const [forecast, setForecast] = useState([]);
+  const [location, setLocation] = useState(""); // State for location
   const [background, setBackground] = useState("cloud_bg");
-  const [error, setError] = useState(null); // State for error messages
+  const [error, setError] = useState(null);
 
+  const API_KEY = "2febae47135f879377604dfd6ab516a2";
 
-  const API_KEY = "2febae47135f879377604dfd6ab516a2"; // Replace with your actual API key
-
-  // Fetch forecast based on city
   const fetchWeather = async (searchCity) => {
     const forecastURL = `https://api.openweathermap.org/data/2.5/forecast?q=${searchCity}&appid=${API_KEY}`;
 
@@ -19,14 +17,18 @@ const WeatherForecast = ({ city }) => {
       const forecastData = await forecastResponse.json();
 
       if (forecastData.cod !== "200") {
-        throw new Error(forecastData.message); // Throw error for invalid response
+        throw new Error(forecastData.message);
       }
 
-      // Clear any previous error
       setError(null);
 
-      // Filter forecast data to show daily predictions (first forecast of each day)
-      const dailyForecast = forecastData.list.filter((_, index) => index % 8 === 0); // Every 8th data point is the forecast for the day
+      // Set location
+      setLocation(forecastData.city.name);
+
+      // Filter for daily data (e.g., first item of each day, typically at "12:00:00")
+      const dailyForecast = forecastData.list.filter((item) =>
+        item.dt_txt.includes("12:00:00")
+      );
 
       setForecast(
         dailyForecast.map((item) => ({
@@ -43,31 +45,30 @@ const WeatherForecast = ({ city }) => {
       else if (condition === "Clouds") setBackground("cloud_bg");
       else if (condition === "Rain") setBackground("rainy_bg");
       else if (condition === "Snow") setBackground("snowy_bg");
-      else setBackground("default_bg"); // Fallback for unknown conditions
+      else setBackground("default_bg");
     } catch (error) {
       console.error("Error fetching weather data:", error.message);
-      setError(error.message); // Set error message
-      setForecast([]); // Clear forecast data on error
-      setBackground("default_bg"); // Reset background
+      setError(error.message);
+      setForecast([]);
+      setBackground("default_bg");
     }
   };
 
-  // Fetch weather whenever the city prop changes
   useEffect(() => {
     if (city) fetchWeather(city);
   }, [city]);
 
   return (
     <div className={`weather-forecast-container ${background}`}>
-      <h3>Weekly Forecast</h3>
+      <h3>5-Day Forecast of {location}</h3>
+       {/* Display the location */}
 
-      {/* Display error message */}
       {error && <p className="error-message">{error}</p>}
 
-      <div className="forecast-container">
+      <div className="forecast-row">
         {forecast.map((item, index) => (
           <div key={index} className="forecast-item">
-            <p>{new Date(item.date).toLocaleDateString()}</p> {/* Show only the date */}
+            <p>{new Date(item.date).toLocaleDateString()}</p>
             <img
               src={`https://openweathermap.org/img/wn/${item.icon}.png`}
               alt={item.description}

@@ -14,9 +14,9 @@ import "../Weatherforcat/WeatherApp.css";
 
 const CurrentWeather = () => {
   const apiKey = "2febae47135f879377604dfd6ab516a2";
-  const [city, setCity] = useState("Kandy"); // Default city
-  const [wicon, setWicon] = useState(cloud_icon);
-  const [background, setBackground] = useState("cloud_bg"); // Default background class
+  const [city, setCity] = useState("Akurana"); // Default city
+  const [wicon, setWicon] = useState("");
+  const [background, setBackground] = useState(""); // Default background class
   const [weatherData, setWeatherData] = useState({
     temp: "--",
     location: "--",
@@ -70,8 +70,8 @@ const CurrentWeather = () => {
         wind: "--",
         windDirection: 0,
       });
-      setWicon(cloud_icon);
-      setBackground("cloud_bg");
+      setWicon(clear_icon);
+      setBackground("clear_bg");
     }
   };
 

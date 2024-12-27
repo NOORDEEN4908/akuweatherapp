@@ -4,7 +4,7 @@
     height: 600px;
     padding: 1rem;
     transition: background-color 0.5s ease;
-    width: 100%;
+background: rgb(37, 150, 190);
     gap: 0; /* Ensures no gap between components */
   }
   
@@ -20,35 +20,25 @@
   
   .forecast-container {
     display: flex;
+    width: 50%;
     flex-wrap: wrap;
     height: 500px;
     gap: 1rem;
-    justify-content: center;
+    justify-content: end;
+    overflow-y: scroll;
   }
   
-  .forecast-item {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    background: #fff;
-    border-radius: 10px;
-    padding: 1rem;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    width: 100px;
-    height: 100px;
-    text-align: center;
-  }
   
-  .forecast-item img {
-    width: 50px;
-    height: 50px;
-  }
+  
+
   .weather-forecast-container {
-    background: #f0f0f0;
+  
+ 
     padding: 1rem;
     border-radius: 10px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    width: 50%;
+
   }
   
   .forecast-container {
@@ -60,12 +50,12 @@
   }
   
   .forecast-item {
-    background: white;
+    background-color: rgba(0, 0, 0, 0.2);
     border-radius: 10px;
-    padding: 1rem;
+    padding: 60px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     text-align: center;
-    height: 500px; /* Set height of the forecast box */
+    height: 450px; /* Set height of the forecast box */
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -73,12 +63,12 @@
   }
   
   .forecast-item img {
-    width: 60px;
-    height: 60px;
+    width: 100px;
+    height: 100px;
   }
   
   .forecast-item p {
-    font-size: 1.2rem;
+    font-size: 1.4rem;
     margin: 0.5rem 0;
   }
   
@@ -86,5 +76,6 @@
     text-align: center;
     font-size: 1.8rem;
     margin-bottom: 1rem;
+    color: white;
   }
   

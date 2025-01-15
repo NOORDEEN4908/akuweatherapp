@@ -9,7 +9,7 @@ import snow_icon from "../Assets/snow.png";
 import wind_icon from "../Assets/wind.png";
 import compas_icon from "../Assets/compas.png";
 import humidity_icon from "../Assets/humidity.png";
-import WeatherForecast from "../Weatherforcast/weatherforcast";
+import WeatherForecast from "../Weatherforcast/WeatherForcast";
 import "../Weatherforcast/WeatherApp.css";
 
 const CurrentWeather = () => {

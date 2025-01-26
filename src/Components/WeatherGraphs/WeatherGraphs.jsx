@@ -31,14 +31,33 @@ const WeatherGraphs = () => {
           `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${apiKey}`
         );
 
-        const data = response.data.list.map((entry) => ({
-          time: entry.dt_txt,
-          rainfall: entry.rain ? entry.rain["3h"] || 0 : 0,
-          humidity: entry.main.humidity,
-          temperature: (entry.main.temp - 273.15).toFixed(2), // Convert Kelvin to Celsius
-          windSpeed: entry.wind.speed,
-        }));
+        const today = new Date(); // Current date and time
+const tomorrow = new Date(today);
+tomorrow.setDate(today.getDate() + 1); // Add 1 day to get tomorrow
 
+const formatDate = (date) => date.toISOString().split("T")[0]; // Format date as YYYY-MM-DD
+
+const todayStr = formatDate(today); // Format for today
+const tomorrowStr = formatDate(tomorrow); // Format for tomorrow
+
+const data = response.data.list
+  .filter((entry) => {
+    const entryDate = entry.dt_txt.split(" ")[0]; // Extract date part from dt_txt
+    const hour = new Date(entry.dt_txt).getHours(); // Extract hour
+    return (entryDate === todayStr || entryDate === tomorrowStr) && hour % 3 === 0; // Filter for today/tomorrow and 3-hour intervals
+  })
+  .map((entry) => ({
+    date: entry.dt_txt.split(" ")[0], // Extract the date (YYYY-MM-DD)
+    time: entry.dt_txt, // Full timestamp (YYYY-MM-DD HH:mm:ss)
+    rainfall: entry.rain ? entry.rain["3h"] || 0 : 0, // Rainfall for the 3-hour interval
+    humidity: entry.main.humidity, // Humidity
+    temperature: (entry.main.temp - 273.15).toFixed(2), // Convert Kelvin to Celsius
+    windSpeed: entry.wind.speed, // Wind speed
+  }));
+
+console.log(data);
+
+      
         setLabels(data.map((entry) => entry.time));
         setRainfallData(data.map((entry) => entry.rainfall));
         setHumidityData(data.map((entry) => entry.humidity));

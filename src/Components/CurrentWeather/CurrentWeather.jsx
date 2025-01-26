@@ -9,8 +9,8 @@ import snow_icon from "../Assets/snow.png";
 import wind_icon from "../Assets/wind.png";
 import compas_icon from "../Assets/compas.png";
 import humidity_icon from "../Assets/humidity.png";
-import WeatherForecast from "../Weatherforcat/weatherforcast";
-import "../Weatherforcat/WeatherApp.css";
+import WeatherForecast from "../Weatherforcast/WeatherForcast";
+import "../Weatherforcast/WeatherApp.css";
 
 const CurrentWeather = () => {
   const apiKey = "2febae47135f879377604dfd6ab516a2";

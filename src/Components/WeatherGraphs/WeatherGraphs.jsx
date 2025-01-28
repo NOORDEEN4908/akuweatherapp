@@ -12,6 +12,7 @@ import {
   Legend,
 } from "chart.js";
 import "./WeatherGraphs.css";
+import Footer from "../Footer/Footer";
 
 ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend);
 
@@ -120,7 +121,9 @@ console.log(data);
         <h2>Wind Speed</h2>
         <Line data={createChartData(windSpeedData, `Wind Speed in ${city} (m/s)`, "orange", "rgba(255, 165, 0, 0.2)")} options={chartOptions} />
       </div>
+     
     </div>
+   
   );
 };
 

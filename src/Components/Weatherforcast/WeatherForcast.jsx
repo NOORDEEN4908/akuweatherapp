@@ -61,9 +61,7 @@ const WeatherForecast = ({ city }) => {
   return (
     <div className={`weather-forecast-container ${background}`}>
       <h3>5-Day Forecast of {location}</h3>
-       {/* Display the location */}
-
-
+      {/* Display the location */}
 
       <div className="forecast-row">
         {forecast.map((item, index) => (

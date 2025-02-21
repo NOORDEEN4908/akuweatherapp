@@ -13,31 +13,31 @@
 
 /* Background Styles based on Weather Conditions */
 .clear_bg {
-  background-image: url('../Assets/clearsky.jpg');
+  background-image: url("../Assets/clearsky.jpg");
   background-size: cover;
   background-position: center;
 }
 
 .cloud_bg {
-  background-image: url('../Assets/closeup-large-gray-clouds.jpg');
+  background-image: url("../Assets/closeup-large-gray-clouds.jpg");
   background-size: cover;
   background-position: center;
 }
 
 .rainy_bg {
-  background-image: url('../Assets/rain.jpg');
+  background-image: url("../Assets/rain.jpg");
   background-size: cover;
   background-position: center;
 }
 
 .snowy_bg {
-  background-image: url('../Assets/snow.jpg');
+  background-image: url("../Assets/snow.jpg");
   background-size: cover;
   background-position: center;
 }
 
 .default_bg {
-  background-image: url('../Assets/clearsky.jpg');
+  background-image: url("../Assets/clearsky.jpg");
   background-size: cover;
   background-position: center;
 }

@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import "./CurrentWeather.css";
 import search_icon from "../Assets/search.png";
 import clear_icon from "../Assets/clear.png";
 import cloud_icon from "../Assets/cloud.png";
@@ -11,6 +10,7 @@ import compas_icon from "../Assets/compas.png";
 import humidity_icon from "../Assets/humidity.png";
 import WeatherForecast from "../Weatherforcast/WeatherForcast";
 import "../Weatherforcast/WeatherApp.css";
+import "./CurrentWeather.css";
 
 const CurrentWeather = () => {
   const apiKey = "2febae47135f879377604dfd6ab516a2";
@@ -62,7 +62,6 @@ const CurrentWeather = () => {
         setBackground("default_bg");
       }
     } catch (error) {
-      
       setWeatherData({
         temp: "--",
         location: "--",
@@ -90,8 +89,22 @@ const CurrentWeather = () => {
 
   const getWindDirection = (degree) => {
     const directions = [
-      "N", "NNE", "NE", "ENE", "E", "ESE", "SE", "SSE",
-      "S", "SSW", "SW", "WSW", "W", "WNW", "NW", "NNW",
+      "N",
+      "NNE",
+      "NE",
+      "ENE",
+      "E",
+      "ESE",
+      "SE",
+      "SSE",
+      "S",
+      "SSW",
+      "SW",
+      "WSW",
+      "W",
+      "WNW",
+      "NW",
+      "NNW",
     ];
     const index = Math.round((degree % 360) / 22.5) % 16;
     return directions[index];
@@ -99,10 +112,9 @@ const CurrentWeather = () => {
 
   return (
     <div className={`weather-app-container current-weather ${background}`}>
-    <div className={`current-weather ${background}`}>
-      {/* Your content goes here */}
-   
-  
+      <div className={`current-weather ${background}`}>
+        {/* Your content goes here */}
+
         <div className="top-bar">
           <input
             type="text"
@@ -138,7 +150,9 @@ const CurrentWeather = () => {
           <div className="element">
             <img src={compas_icon} alt="Wind Direction" />
             <div>
-              <div className="data">{getWindDirection(weatherData.windDirection)}</div>
+              <div className="data">
+                {getWindDirection(weatherData.windDirection)}
+              </div>
               <div className="text">Wind Direction</div>
             </div>
           </div>

@@ -6,8 +6,8 @@
   height: 80px;
   background: linear-gradient(
     135deg,
-    #004e92,
-    #000428
+    #025fb1,
+    #0e65d7
   ); /* Deep blue gradient */
   color: white;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
@@ -19,16 +19,7 @@
 /* Left and Right Patterns */
 .side-pattern {
   width: 10%;
-  background: url("pattern-image.png") center/cover no-repeat;
   height: 100%;
-}
-
-.left-pattern {
-  border-right: 2px solid rgba(255, 255, 255, 0.2);
-}
-
-.right-pattern {
-  border-left: 2px solid rgba(255, 255, 255, 0.2);
 }
 
 /* Centered Navbar Content */
@@ -58,7 +49,7 @@
 }
 
 .nav-item a:hover {
-  background-color: #1c75bc;
+  background-color: #4596d8;
   color: #fff;
   transform: translateY(-2px);
   box-shadow: 0 4px 6px rgba(255, 255, 255, 0.2);

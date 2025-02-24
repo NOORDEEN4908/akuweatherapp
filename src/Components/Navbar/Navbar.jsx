@@ -10,6 +10,9 @@ const Navbar = () => {
       {/* Centered Navbar */}
       <nav className="navbar-content">
         <ul className="nav-menu">
+          <li className="nav-header">
+            <a href="#home">Akurana Weather</a>
+          </li>
           <li className="nav-item">
             <a href="#home">Home</a>
           </li>

@@ -3,98 +3,92 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+<<<<<<< HEAD
   height: 100px; /* Banner height */
   background-color: #003f88; /* Light blue gradient */
   font-family: Arial, sans-serif;
   color: white;
   text-align: center;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Adds depth */
+=======
+  height: 80px;
+  background: linear-gradient(135deg, #004e92, #000428); /* Deep blue gradient */
+  color: white;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+>>>>>>> fb001798c8013077af33ec5db64d3254b359f954
   position: relative;
+  padding: 0 20px;
+  margin-bottom: 30px; /* Adjust as needed */
 }
 
 /* Left and Right Patterns */
 .side-pattern {
-  width: 10%; /* Width for patterns */
-  background: url('pattern-image.png') center center/cover no-repeat; /* Add your pattern image */
+  width: 10%;
+  background: url('pattern-image.png') center/cover no-repeat;
   height: 100%;
 }
 
 .left-pattern {
-  border-right: 2px solid #b0d4e5; /* Separator line */
+  border-right: 2px solid rgba(255, 255, 255, 0.2);
 }
 
 .right-pattern {
-  border-left: 2px solid #b0d4e5;
+  border-left: 2px solid rgba(255, 255, 255, 0.2);
 }
 
 /* Centered Navbar Content */
 .navbar-content {
-  flex: 1; /* Occupies remaining space */
+  flex: 1;
   display: flex;
-  flex-direction: column;
   justify-content: center;
-  align-items: center;
-  gap: 15px;
-}
-
-/* Navbar Title Styling */
-.navbar-title {
-  font-size: 2.5rem;
-  font-weight: bold;
-  margin: 0;
-  text-shadow: 1px 2px 4px rgba(0, 0, 0, 0.3); /* Subtle text shadow */
 }
 
 /* Navigation Menu */
 .nav-menu {
   display: flex;
-  gap: 20px;
+  gap: 25px;
   list-style: none;
-  padding: 0;
   margin: 0;
+  padding: 0;
 }
 
 .nav-item a {
   text-decoration: none;
+<<<<<<< HEAD
   font-size: 1.2rem;
   font-weight: 500;
+=======
+  font-size: 1.1rem;
+  font-weight: bold;
+>>>>>>> fb001798c8013077af33ec5db64d3254b359f954
   color: white;
   padding: 10px 15px;
   border-radius: 5px;
   transition: all 0.3s ease-in-out;
 }
 
-/* Hover Effect for Navigation Links */
 .nav-item a:hover {
-  background-color: #1c75bc; /* Darker blue */
-  color: white;
-  transform: scale(1.05); /* Slight zoom */
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-}
-
-/* Active or Focused Link */
-.nav-item a:active,
-.nav-item a:focus {
-  background-color: #004e8b; /* Darker shade for active */
+  background-color: #1c75bc;
   color: #fff;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 6px rgba(255, 255, 255, 0.2);
 }
 
-/* Responsive Adjustments */
+/* Responsive Design */
 @media (max-width: 768px) {
   .navbar-container {
-    height: 150px;
-  }
-
-  .navbar-title {
-    font-size: 2rem;
+    height: auto;
+    flex-direction: column;
+    padding: 10px;
   }
 
   .nav-menu {
     flex-direction: column;
     gap: 10px;
+    align-items: center;
   }
 
   .side-pattern {
-    display: none; /* Hide patterns on smaller screens */
+    display: none;
   }
 }

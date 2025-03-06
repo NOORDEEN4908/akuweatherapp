@@ -1,100 +1,65 @@
 import React from 'react';
-import { FaDiscord, FaFacebook, FaLinkedin, FaTwitter } from 'react-icons/fa';
-import './footer.css';
+import { FaFacebook, FaTwitter, FaLinkedin, FaInstagram } from 'react-icons/fa';
+import './Footer.css';
 
 const Footer = () => {
   return (
     <div className="footer">
       <div className="footer-container">
-        {/* Working Hours Section */}
         <div className="footer-section">
-          <h4>WORKING HOURS</h4>
+          <h4>STAY UPDATED</h4>
+          <p>Subscribe for the latest weather updates and alerts.</p>
+          <input type="email" placeholder="Enter your email" className="footer-input" style={{ marginTop: '10px' }}/>
+          <button className="footer-button" style={{ marginTop: '10px' }}>Subscribe</button>
+        </div>
+
+        {/* Quick Links Section */}
+        <div className="footer-section">
+          <h4>QUICK LINKS</h4>
           <ul>
-            <li>Mon-Fri: 09:30AM - 06:00PM</li>
-            <li>Tusday : 09:30AM - 06:00PM</li>
-            <li>Sat: 09:30AM - 02:00PM</li>
-            <li>Sun: Closed</li>
+            <li><a href="/about">About Us</a></li>
+            <li><a href="/terms">Terms of Service</a></li>
+            <li><a href="/privacy">Privacy Policy</a></li>
+            <li><a href="/contact">Contact</a></li>
           </ul>
         </div>
 
-        {/* Showrooms Section */}
+        {/* Weather Resources Section */}
         <div className="footer-section">
-          <h4>SHOWROOMS</h4>
+          <h4>WEATHER RESOURCES</h4>
           <ul>
-            <li>Kandy: +94 776 584 975</li>
-            <li>Matara: +94 776 584 975</li>
-          </ul>
-        </div>
-
-        {/* Partners Section */}
-        <div className="footer-section">
-          <h4>PARTNERS</h4>
-          <ul>
-            <li>
-              <a href="https://www.apple.com" target="_blank" rel="noopener noreferrer">
-                Apple Inc.
-              </a>
-            </li>
-            <li>
-              <a href="https://www.dell.com" target="_blank" rel="noopener noreferrer">
-                Dell Computers
-              </a>
-            </li>
-            <li>
-              <a href="https://www.hp.com" target="_blank" rel="noopener noreferrer">
-                Hewlett Packard
-              </a>
-            </li>
-            <li>
-              <a href="https://www.lenovo.com" target="_blank" rel="noopener noreferrer">
-                Lenovo Technologies
-              </a>
-            </li>
-          </ul>
-        </div>
-
-        {/* Company Section */}
-        <div className="footer-section">
-          <h4>COMPANY</h4>
-          <ul>
-            <li>
-              <a href="/aboutus">About Us</a>
-            </li>
-            <li>
-              <a href="/privacypolicy">Privacy Policy</a>
-            </li>
-            <li>
-              <a href="/security">Security</a>
-            </li>
+            <li><a href="/radar">Live Radar</a></li>
+            <li><a href="/forecasts">Weather Forecasts</a></li>
+            <li><a href="/alerts">Severe Weather Alerts</a></li>
+            <li><a href="/climate">Climate Reports</a></li>
           </ul>
         </div>
 
         {/* Social Media Section */}
         <div className="footer-section connect-with-us">
-  <h4>CONNECT WITH US</h4>
-  <div className="footer-social-icons">
-    <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer">
-      <FaFacebook className="social-icon" />
-    </a>
-    <a href="https://www.twitter.com" target="_blank" rel="noopener noreferrer">
-      <FaTwitter className="social-icon" />
-    </a>
-    <a href="https://www.linkedin.com" target="_blank" rel="noopener noreferrer">
-      <FaLinkedin className="social-icon" />
-    </a>
-    <a href="https://www.discord.com" target="_blank" rel="noopener noreferrer">
-      <FaDiscord className="social-icon" />
-    </a>
-  </div>
-</div>
-
+          <h4>FOLLOW US ON</h4>
+          <div className="footer-social-icons">
+            <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer">
+              <FaFacebook className="social-icon" />
+            </a>
+            <a href="https://www.twitter.com" target="_blank" rel="noopener noreferrer">
+              <FaTwitter className="social-icon" />
+            </a>
+            <a href="https://www.linkedin.com" target="_blank" rel="noopener noreferrer">
+              <FaLinkedin className="social-icon" />
+            </a>
+            <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer">
+              <FaInstagram className="social-icon" />
+            </a>
+          </div>
+        </div>
       </div>
 
       <hr />
 
       {/* Footer Bottom */}
       <div className="footer-bottom">
-        <p>Platinum &copy; {new Date().getFullYear()} All Rights Reserved.</p>
+        <p>Akurana Weather &copy; {new Date().getFullYear()} All Rights Reserved.</p>
       </div>
     </div>
   );

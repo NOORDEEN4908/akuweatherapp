@@ -1,4 +1,4 @@
-# Weather Web App
+# Akurana Weather (Web Application)
 
 ## Overview
 This is a **Weather Web Application** developed as part of the final project for the **BSc Software Engineering** program at Cardiff University, UK. The app is currently in its early stages of development and is built using the **MERN stack** (MongoDB, Express.js, React, Node.js).

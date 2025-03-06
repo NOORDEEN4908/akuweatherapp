@@ -4,9 +4,9 @@
   justify-content: space-between;
   align-items: center;
   height: 100px; /* Banner height */
-  background: linear-gradient(to bottom, #d0eaff, #1724da); /* Light blue gradient */
+  background-color: #003f88; /* Light blue gradient */
   font-family: Arial, sans-serif;
-  color: navy;
+  color: white;
   text-align: center;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Adds depth */
   position: relative;
@@ -58,7 +58,7 @@
   text-decoration: none;
   font-size: 1.2rem;
   font-weight: 500;
-  color: navy;
+  color: white;
   padding: 10px 15px;
   border-radius: 5px;
   transition: all 0.3s ease-in-out;

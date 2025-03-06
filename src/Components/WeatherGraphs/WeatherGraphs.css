@@ -1,28 +1,41 @@
-/* WeatherGraphs.css */
 .weather-graphs-container {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(auto-fill, minmax(48%, 1fr)); /* Adjust columns for a better responsive layout */
   gap: 20px;
   padding: 20px;
-  max-width: 1200px;
-  margin: 0 auto;
+  max-width: 100%;
+  margin: auto;
 }
 
 .graph-box {
   padding: 20px;
-  background-color: #f9f9f9;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+  border-radius: 15px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%; /* Ensures the box takes full width of its grid cell */
+  min-height: 300px; /* Prevents shrinking to too small height */
 }
 
 .graph-box h2 {
   font-family: Arial, sans-serif;
-  color: #333;
-  margin-bottom: 20px;
+  color: #222;
+  margin-bottom: 15px;
+  font-size: 1.5rem;
 }
 
-.graph-box canvas {
-  max-width: 100%;
-  height: auto;
+.chart-container {
+  width: 100%;
+  height: 300px; /* Keep a consistent height for graphs */
+}
+
+@media (max-width: 768px) {
+  /* Stacks the graphs vertically on smaller screens */
+  .weather-graphs-container {
+    grid-template-columns: 1fr; /* Stack all graphs vertically */
+  }
 }

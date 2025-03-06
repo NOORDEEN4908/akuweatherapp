@@ -16,14 +16,13 @@ import Footer from "../Footer/Footer";
 
 ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend);
 
-const WeatherGraphs = () => {
+const WeatherGraphs = ({ city }) => {
   const [labels, setLabels] = useState([]);
   const [rainfallData, setRainfallData] = useState([]);
   const [humidityData, setHumidityData] = useState([]);
   const [temperatureData, setTemperatureData] = useState([]);
   const [windSpeedData, setWindSpeedData] = useState([]);
-  const city = "Akurana"; // Change this to your desired city
-  const apiKey = "2febae47135f879377604dfd6ab516a2"; // Replace with your OpenWeather API key
+  const apiKey = "2febae47135f879377604dfd6ab516a2"; // Your OpenWeather API key
 
   useEffect(() => {
     const fetchWeatherData = async () => {
@@ -33,33 +32,48 @@ const WeatherGraphs = () => {
         );
 
         const today = new Date(); // Current date and time
-const tomorrow = new Date(today);
-tomorrow.setDate(today.getDate() + 1); // Add 1 day to get tomorrow
+        const tomorrow = new Date(today);
+        tomorrow.setDate(today.getDate() + 1); // Add 1 day to get tomorrow
 
-const formatDate = (date) => date.toISOString().split("T")[0]; // Format date as YYYY-MM-DD
+        const formatDate = (date) => date.toISOString().split("T")[0]; // Format date as YYYY-MM-DD
 
-const todayStr = formatDate(today); // Format for today
-const tomorrowStr = formatDate(tomorrow); // Format for tomorrow
+        const todayStr = formatDate(today); // Format for today
+        const tomorrowStr = formatDate(tomorrow); // Format for tomorrow
 
-const data = response.data.list
-  .filter((entry) => {
-    const entryDate = entry.dt_txt.split(" ")[0]; // Extract date part from dt_txt
-    const hour = new Date(entry.dt_txt).getHours(); // Extract hour
-    return (entryDate === todayStr || entryDate === tomorrowStr) && hour % 3 === 0; // Filter for today/tomorrow and 3-hour intervals
-  })
-  .map((entry) => ({
-    date: entry.dt_txt.split(" ")[0], // Extract the date (YYYY-MM-DD)
-    time: entry.dt_txt, // Full timestamp (YYYY-MM-DD HH:mm:ss)
-    rainfall: entry.rain ? entry.rain["3h"] || 0 : 0, // Rainfall for the 3-hour interval
-    humidity: entry.main.humidity, // Humidity
-    temperature: (entry.main.temp - 273.15).toFixed(2), // Convert Kelvin to Celsius
-    windSpeed: entry.wind.speed, // Wind speed
-  }));
+        const data = response.data.list
+          .slice(0, 16) // Limit to 48 hours of data (16 intervals for 48 hours)
+          .map((entry) => ({
+            time: entry.dt_txt, // Full timestamp (YYYY-MM-DD HH:mm:ss)
+            rainfall: entry.rain ? entry.rain["3h"] || 0 : 0, // Rainfall for the 3-hour interval
+            humidity: entry.main.humidity, // Humidity
+            temperature: (entry.main.temp - 273.15).toFixed(2), // Convert Kelvin to Celsius
+            windSpeed: entry.wind.speed, // Wind speed
+          }));
 
-console.log(data);
+        // Convert to 12-hour format with AM/PM for labels, adding date (Today or Tomorrow)
+        const formatTime = (timeStr) => {
+          const date = new Date(timeStr);
+          let hours = date.getHours();
+          const minutes = date.getMinutes();
+          const ampm = hours >= 12 ? "PM" : "AM";
+          hours = hours % 12;
+          hours = hours ? hours : 12; // the hour '0' should be '12'
+          const formattedTime = `${hours}:${minutes < 10 ? "0" + minutes : minutes} ${ampm}`;
+          return formattedTime;
+        };
 
-      
-        setLabels(data.map((entry) => entry.time));
+        const formatLabel = (timeStr) => {
+          const date = new Date(timeStr);
+          const dateStr = date.toISOString().split("T")[0];
+          const time = formatTime(timeStr);
+          return dateStr === todayStr
+            ? `Today - ${time}`
+            : dateStr === tomorrowStr
+            ? `Tomorrow - ${time}`
+            : time;
+        };
+
+        setLabels(data.map((entry) => formatLabel(entry.time))); // Format the time and add "Today" or "Tomorrow"
         setRainfallData(data.map((entry) => entry.rainfall));
         setHumidityData(data.map((entry) => entry.humidity));
         setTemperatureData(data.map((entry) => entry.temperature));
@@ -70,7 +84,7 @@ console.log(data);
     };
 
     fetchWeatherData();
-  }, [city, apiKey]);
+  }, [city, apiKey]); // Watch for changes in city
 
   const createChartData = (data, label, borderColor, backgroundColor) => ({
     labels: labels,
@@ -81,6 +95,7 @@ console.log(data);
         borderColor: borderColor,
         backgroundColor: backgroundColor,
         fill: true,
+        lineTension: 0.3, // Optional: add some smoothness to the line
       },
     ],
   });
@@ -91,13 +106,13 @@ console.log(data);
       x: {
         title: {
           display: true,
-          text: "Time",
+          text: "Time (Next 48 hours)", // Label indicating next 48 hours
         },
       },
       y: {
         title: {
           display: true,
-          text: "Value",
+          text: "Value", // Y-axis label
         },
       },
     },
@@ -105,25 +120,31 @@ console.log(data);
 
   return (
     <div className="weather-graphs-container">
-      <div className="graph-box">
-        <h2>Rainfall</h2>
-        <Line data={createChartData(rainfallData, `Rainfall in ${city} (mm)`, "blue", "rgba(0, 0, 255, 0.2)")} options={chartOptions} />
-      </div>
-      <div className="graph-box">
-        <h2>Humidity</h2>
-        <Line data={createChartData(humidityData, `Humidity in ${city} (%)`, "green", "rgba(0, 255, 0, 0.2)")} options={chartOptions} />
-      </div>
-      <div className="graph-box">
-        <h2>Temperature</h2>
-        <Line data={createChartData(temperatureData, `Temperature in ${city} (°C)`, "red", "rgba(255, 0, 0, 0.2)")} options={chartOptions} />
-      </div>
-      <div className="graph-box">
-        <h2>Wind Speed</h2>
-        <Line data={createChartData(windSpeedData, `Wind Speed in ${city} (m/s)`, "orange", "rgba(255, 165, 0, 0.2)")} options={chartOptions} />
-      </div>
-     
+      {rainfallData.length > 0 && (
+        <div className="graph-box">
+          <h2>Rainfall (Next 48 hours)</h2> {/* Updated title */}
+          <Line data={createChartData(rainfallData, `Rainfall in ${city} (mm)`, "blue", "rgba(0, 0, 255, 0.2)")} />
+        </div>
+      )}
+      {humidityData.length > 0 && (
+        <div className="graph-box">
+          <h2>Humidity (Next 48 hours)</h2> {/* Updated title */}
+          <Line data={createChartData(humidityData, `Humidity in ${city} (%)`, "green", "rgba(0, 255, 0, 0.2)")} options={chartOptions} />
+        </div>
+      )}
+      {temperatureData.length > 0 && (
+        <div className="graph-box">
+          <h2>Temperature (Next 48 hours)</h2> {/* Updated title */}
+          <Line data={createChartData(temperatureData, `Temperature in ${city} (°C)`, "red", "rgba(255, 0, 0, 0.2)")} options={chartOptions} />
+        </div>
+      )}
+      {windSpeedData.length > 0 && (
+        <div className="graph-box">
+          <h2>Wind Speed (Next 48 hours)</h2> {/* Updated title */}
+          <Line data={createChartData(windSpeedData, `Wind Speed in ${city} (m/s)`, "orange", "rgba(255, 165, 0, 0.2)")} options={chartOptions} />
+        </div>
+      )}
     </div>
-   
   );
 };
 

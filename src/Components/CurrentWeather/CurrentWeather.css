@@ -1,45 +1,208 @@
 /* Main Container for the App */
 .container {
   width: 100%;
-  max-width: 600px; /* Responsive max width */
-  height: 600px;
-  margin: 15px auto; /* Center horizontally with top margin */
+  max-width: 600px;
+  height: 1000px; /* Increased from 800px to 1000px */
+  margin: 15px auto;
   border-radius: 12px;
   padding: 20px;
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
   transition: background 0.5s ease;
   overflow: hidden;
+  position: relative;
 }
 
-/* Background Styles based on Weather Conditions */
-.clear_bg {
-  background-image: url('../Assets/clearsky.jpg');
+.weather-app-container {
+  width: 100%;
+  min-height: 100vh;
+  padding: 20px;
+  box-sizing: border-box;
   background-size: cover;
   background-position: center;
+  position: relative;
+  transition: background-image 0.3s ease;
 }
 
-.cloud_bg {
-  background-image: url('../Assets/closeup-large-gray-clouds.jpg');
-  background-size: cover;
-  background-position: center;
+.current-weather {
+  width: 100%;
+  height: auto;
+  min-height: 600px; /* Added minimum height */
+  padding-bottom: 30px;
+  position: relative;
 }
 
-.rainy_bg {
-  background-image: url('../Assets/rain.jpg');
-  background-size: cover;
-  background-position: center;
+/* Night Mode Backgrounds */
+.night-mode.clear_bg,
+.night-mode.cloud_bg,
+.night-mode.rainy_bg,
+.night-mode.snowy_bg,
+.night-mode.default_bg {
+  background: #000000;
+  position: relative;
+  overflow: hidden;
 }
 
-.snowy_bg {
-  background-image: url('../Assets/snow.jpg');
-  background-size: cover;
-  background-position: center;
+/* Stars for night mode */
+.night-mode::after {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: 
+    radial-gradient(2px 2px at 20% 30%, #ffffff, rgba(0,0,0,0)),
+    radial-gradient(2px 2px at 40% 70%, #ffffff, rgba(0,0,0,0)),
+    radial-gradient(3px 3px at 50% 160px, #ffd700, rgba(0,0,0,0)),
+    radial-gradient(2px 2px at 60% 40%, #ffffff, rgba(0,0,0,0)),
+    radial-gradient(2px 2px at 70% 80%, #ffffff, rgba(0,0,0,0)),
+    radial-gradient(3px 3px at 80% 120px, #ffd700, rgba(0,0,0,0)),
+    radial-gradient(2px 2px at 90% 40%, #ffffff, rgba(0,0,0,0)),
+    radial-gradient(3px 3px at 95% 90%, #ffd700, rgba(0,0,0,0)),
+    radial-gradient(2px 2px at 10% 60%, #ffffff, rgba(0,0,0,0));
+  background-repeat: no-repeat;
+  z-index: 1;
 }
 
-.default_bg {
-  background-image: url('../Assets/clearsky.jpg');
-  background-size: cover;
-  background-position: center;
+/* Morning Mode Backgrounds */
+.morning-mode.clear_bg {
+  background: linear-gradient(180deg, #87CEEB 0%, #E0F6FF 100%);
+}
+
+.morning-mode.cloud_bg {
+  background: linear-gradient(180deg, #A5D8FF 0%, #E0F6FF 100%);
+}
+
+.morning-mode.rainy_bg {
+  background: linear-gradient(180deg, #708090 0%, #A5B9C9 100%);
+}
+
+.morning-mode.snowy_bg {
+  background: linear-gradient(180deg, #E0FFFF 0%, #F0F8FF 100%);
+}
+
+.morning-mode.default_bg {
+  background: linear-gradient(180deg, #87CEEB 0%, #E0F6FF 100%);
+}
+
+/* Day Mode Backgrounds */
+.day-mode.clear_bg {
+  background: linear-gradient(180deg, #4A90E2 0%, #87CEEB 100%);
+}
+
+.day-mode.cloud_bg {
+  background: linear-gradient(180deg, #7CB9E8 0%, #C0E1FF 100%);
+}
+
+.day-mode.rainy_bg {
+  background: linear-gradient(180deg, #4682B4 0%, #778899 100%);
+}
+
+.day-mode.snowy_bg {
+  background: linear-gradient(180deg, #B0E0E6 0%, #E0FFFF 100%);
+}
+
+.day-mode.default_bg {
+  background: linear-gradient(180deg, #4A90E2 0%, #87CEEB 100%);
+}
+
+/* Evening Mode Backgrounds */
+.evening-mode.clear_bg {
+  background: linear-gradient(180deg, #2C3E50 0%, #3498DB 100%);
+}
+
+.evening-mode.cloud_bg {
+  background: linear-gradient(180deg, #34495E 0%, #5D8CAE 100%);
+}
+
+.evening-mode.rainy_bg {
+  background: linear-gradient(180deg, #2C3E50 0%, #34495E 100%);
+}
+
+.evening-mode.snowy_bg {
+  background: linear-gradient(180deg, #34495E 0%, #5D8CAE 100%);
+}
+
+.evening-mode.default_bg {
+  background: linear-gradient(180deg, #2C3E50 0%, #3498DB 100%);
+}
+
+/* Time-based overlay adjustments */
+.morning-mode.weather-app-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(255, 255, 255, 0.1);
+  z-index: 1;
+}
+
+.evening-mode.weather-app-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.2);
+  z-index: 1;
+}
+
+.night-mode.weather-app-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.1);
+  z-index: 1;
+}
+
+/* Time-based content adjustments */
+.evening-mode .weather-content,
+.night-mode .weather-content {
+  background: transparent;
+}
+
+.evening-mode .search-section input,
+.evening-mode .time-display,
+.evening-mode .weather-details,
+.night-mode .search-section input,
+.night-mode .time-display,
+.night-mode .weather-details {
+  background: rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(8px);
+}
+
+/* Night Mode Styles */
+.night-mode .weather-content {
+  background: transparent;
+  z-index: 2;
+}
+
+.night-mode .search-section input,
+.night-mode .time-display,
+.night-mode .weather-details {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(8px);
+}
+
+.night-mode .weather-temp,
+.night-mode .weather-location,
+.night-mode .data,
+.night-mode .text {
+  color: #ffffff;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+}
+
+/* Evening Mode Styles */
+.evening-mode {
+  filter: brightness(0.85) contrast(1.05);
 }
 
 /* Search Bar Section */
@@ -110,39 +273,219 @@
   font-weight: 400;
 }
 
-/* Data Container Section */
-.data-container {
-  margin-top: 30px;
+/* Weather Content Section */
+.weather-content {
+  width: 100%;
+  max-width: 500px;
+  margin: 0 auto;
+  padding: 15px;
+  box-sizing: border-box;
   display: flex;
-  justify-content: space-around;
-  flex-wrap: wrap;
-  gap: 15px; /* Add space between rows */
-  color: white;
-  padding: 10px;
-  background-color: rgba(0, 0, 0, 0.2); /* Semi-transparent for contrast */
+  flex-direction: column;
+  gap: 20px;
+  position: relative;
+  z-index: 2;
+}
+
+/* Search Section with Suggestions */
+.search-section {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
+  margin-bottom: 15px;
+  position: relative;
+}
+
+.cityInput {
+  width: 80%;
+  height: 40px;
+  background: rgba(255, 255, 255, 0.2);
+  border: none;
+  outline: none;
+  border-radius: 20px;
+  padding: 0 15px;
+  color: #ffffff;
+  font-size: 14px;
+  backdrop-filter: blur(8px);
+}
+
+.cityInput::placeholder {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+/* Suggestions Container */
+.suggestions-container {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 80%;
+  max-height: 200px;
+  background: rgba(255, 255, 255, 0.95);
   border-radius: 10px;
+  margin-top: 5px;
+  overflow-y: auto;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+}
+
+.suggestion-item {
+  padding: 10px 15px;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  transition: background-color 0.2s ease;
+}
+
+.suggestion-item:hover {
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+.suggestion-item .city-name {
+  color: #333;
+  font-weight: 500;
+  font-size: 14px;
+}
+
+.suggestion-item .city-info {
+  color: #666;
+  font-size: 12px;
+  margin-top: 2px;
+}
+
+/* Scrollbar Styles for Suggestions */
+.suggestions-container::-webkit-scrollbar {
+  width: 6px;
+}
+
+.suggestions-container::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.1);
+  border-radius: 3px;
+}
+
+.suggestions-container::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 3px;
+}
+
+.suggestions-container::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 0, 0, 0.3);
+}
+
+/* Night Mode Suggestions */
+.night-mode .suggestions-container {
+  background: rgba(0, 0, 0, 0.85);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.night-mode .suggestion-item {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.night-mode .suggestion-item:last-child {
+  border-bottom: none;
+}
+
+.night-mode .suggestion-item:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.night-mode .suggestion-item .city-name {
+  color: #fff;
+}
+
+.night-mode .suggestion-item .city-info {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+/* Time Display */
+.time-display {
+  text-align: center;
+  padding: 15px;
+  background-color: rgba(0, 0, 0, 0.2);
+  border-radius: 12px;
+  backdrop-filter: blur(8px);
+}
+
+.current-time {
+  font-size: 2rem;
+  font-weight: 600;
+  color: #ffffff;
+  margin-bottom: 5px;
+}
+
+.current-date {
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+/* Weather Main Section */
+.weather-main {
+  text-align: center;
+  margin: 20px 0;
+}
+
+.weather-image {
+  margin-bottom: 15px;
+}
+
+.weather-image img {
+  width: 80px;
+  height: 80px;
+}
+
+.weather-temp {
+  font-size: 2.5rem;
+  font-weight: 600;
+  color: #ffffff;
+  margin-bottom: 10px;
+}
+
+.weather-location {
+  font-size: 1.2rem;
+  color: #ffffff;
+  margin-bottom: 15px;
+}
+
+/* Weather Details Section */
+.weather-details {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.2);
+  padding: 15px;
+  border-radius: 12px;
+  gap: 10px;
+  backdrop-filter: blur(8px);
 }
 
 .element {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 8px;
+  flex: 1;
 }
 
 .element img {
-  width: 40px;
-  height: auto;
+  width: 22px;
+  height: 22px;
+}
+
+.element > div {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
 }
 
 .data {
-  font-size: 1.2rem;
-  font-weight: 400;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #ffffff;
 }
 
 .text {
-  font-size: 1rem;
-  font-weight: 400;
-  opacity: 0.8; /* Reduce visibility slightly */
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.9);
 }
 
 /* Wind Direction Container */
@@ -170,18 +513,80 @@
   }
 
   .weather-temp {
-    font-size: 3rem;
+    font-size: 2rem;
   }
 
   .weather-location {
-    font-size: 1.5rem;
-  }
-
-  .data {
     font-size: 1rem;
   }
 
-  .text {
-    font-size: 0.9rem;
+  .weather-content {
+    padding: 10px;
   }
+
+  .weather-details {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .element {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+.loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 200px;
+  font-size: 1.2rem;
+  color: #ffffff;
+}
+
+.error {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 200px;
+  font-size: 1.2rem;
+  color: #ff4444;
+  text-align: center;
+  padding: 0 20px;
+}
+
+/* Overlay for better text readability */
+.weather-app-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.2);
+  z-index: 1;
+}
+
+/* Night Mode Enhancements */
+.night-mode .weather-content {
+  background: transparent;
+}
+
+.night-mode .search-section input,
+.night-mode .time-display,
+.night-mode .weather-details {
+  background: rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(8px);
+}
+
+.night-mode .weather-temp,
+.night-mode .weather-location,
+.night-mode .data {
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+}
+
+/* Night Mode specific overlay */
+.night-mode.weather-app-container::before {
+  background: rgba(0, 0, 0, 0.4);
 }
